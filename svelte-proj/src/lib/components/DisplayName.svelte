@@ -2,6 +2,10 @@
 	let firstName = $state('Muaz');
 	let lastName = $state('Wazir');
 	let fullName = $derived(`${firstName} ${lastName}`);
+	let fullNameUsingDerivedBy = $derived.by(() => {
+		// derived by function should not produce side effects (Pure functions)
+		return `${firstName} ${lastName}`;
+	});
 	let userName = $state('bigDihhMuaz');
 
 	let src = 'https://picsum.photos/250/300';
