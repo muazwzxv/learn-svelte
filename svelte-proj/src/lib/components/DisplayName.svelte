@@ -14,22 +14,29 @@
 	});
 </script>
 
-<img {src} alt="A photo of {fullName}" />
-<h1>Hello {userName || fullName}</h1>
+<div>
+	<img {src} alt="A photo of {fullName}" />
+	<h1>Hello {userName || fullName}</h1>
+	<input
+		placeholder="First version of binding input to state"
+		value={userName}
+		oninput={(e) => {
+			// logic executed upon event fired
+			userName = e.currentTarget.value;
+		}}
+	/>
+	<input placeholder="Second version of binding input to state" bind:value={userName} />
+	<input bind:value={firstName} />
+	<input bind:value={lastName} />
 
-<input
-	placeholder="First version of binding input to state"
-	value={userName}
-	oninput={(e) => {
-		// logic executed upon event fired
-		userName = e.currentTarget.value;
-	}}
-/>
-
-<input placeholder="Second version of binding input to state" bind:value={userName} />
-
-<!-- Bro got to trust the html -->
-<p>{@html bio}</p>
+	<button
+		onclick={() => {
+			console.log(fullName); // only gets triggered when we're using the value, then signal event gets triggered and this derived state will be part of the dependency
+		}}>Get Full name</button
+	>
+	<!-- Bro got to trust the html -->
+	<p>{@html bio}</p>
+</div>
 
 <style>
 	h1 {
