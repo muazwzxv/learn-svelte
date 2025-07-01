@@ -6,6 +6,8 @@
 	let staleDoubleRandomNumber = $state();
 	let history: number[] = $state([]);
 	let badExampleHistory: number[] = $state([]);
+
+	let historyPtag: HTMLParagraphElement;
 	$effect(() => {
 		// this will be stale as value won't be undapted syncrhonously
 		// state updating is offloaded to macrotask queue
@@ -28,7 +30,7 @@
 <div>
 	<h2>The random number is: {randomNumber}</h2>
 	<h2>Double random number is: {doubleRandomNumber}</h2>
-	<p>History: {history}</p>
+	<p bind:this={historyPtag}>History: {history}</p>
 
 	<button
 		onclick={() => {
