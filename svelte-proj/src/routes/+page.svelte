@@ -7,4 +7,4 @@
 	<Search />
 {/snippet}
 
-<Button left={bottonLeft} />
+<Button left={bottonLeft}>Children text</Button>
