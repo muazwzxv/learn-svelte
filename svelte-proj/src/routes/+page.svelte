@@ -1,5 +1,10 @@
 <script>
 	import Button from '$lib/components/Button.svelte';
+	import { Search } from 'lucide-svelte';
 </script>
 
-<Button />
+{#snippet bottonLeft()}
+	<Search />
+{/snippet}
+
+<Button left={bottonLeft} />

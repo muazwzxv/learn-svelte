@@ -1,4 +1,5 @@
 <script lang="ts">
+	let { left } = $props();
 </script>
 
 {#snippet sum(a: number, b: number)}
@@ -10,8 +11,10 @@
 {/snippet}
 
 <div>
-	<button>Text</button>
-	{@render sum(2, 2)}
+	<button>
+		{@render left()}
+		Text
+	</button>
 </div>
 
 <style>
