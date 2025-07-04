@@ -8,6 +8,8 @@
 		children: Snippet;
 	}
 	let { left, right, children }: Props = $props();
+
+	let isLeftHover = $state(false);
 </script>
 
 <!-- {#snippet sum(a: number, b: number)}
@@ -18,10 +20,23 @@
 	<b>{x}</b>
 {/snippet} -->
 
+<div class="div-test">
+	{isLeftHover}
+</div>
+
 <div>
 	<button>
 		{#if left}
-			<div class="left-content">
+			<div
+				role="presentation"
+				class="left-content"
+				onmouseenter={() => {
+					isLeftHover = true;
+				}}
+				onmouseleave={() => {
+					isLeftHover = false;
+				}}
+			>
 				{@render left()}
 			</div>
 		{/if}
@@ -55,5 +70,13 @@
 		.right-content {
 			margin-inline-start: 10px;
 		}
+	}
+	.div-test {
+		background-color: white;
+		height: 30px;
+		width: 60px;
+		pad: 0 20px;
+		border-radius: 5px;
+		margin-inline-end: 10x;
 	}
 </style>
