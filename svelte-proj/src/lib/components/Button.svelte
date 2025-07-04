@@ -3,9 +3,9 @@
 	import type { Snippet } from 'svelte';
 
 	interface Props {
-		left?: Snippet;
+		left?: Snippet<[boolean]>;
 		right?: Snippet;
-		children: Snippet;
+		children: Snippet<[boolean]>;
 	}
 	let { left, right, children }: Props = $props();
 
@@ -37,11 +37,11 @@
 					isLeftHover = false;
 				}}
 			>
-				{@render left()}
+				{@render left(isLeftHover)}
 			</div>
 		{/if}
 
-		{@render children()}
+		{@render children(isLeftHover)}
 
 		{#if right}
 			<div class="right-content">

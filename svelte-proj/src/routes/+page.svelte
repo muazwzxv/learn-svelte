@@ -1,6 +1,6 @@
-<script>
+<script lang="ts">
 	import Button from '$lib/components/Button.svelte';
-	import { AlarmClock, Search } from 'lucide-svelte';
+	import { AlarmCheck, AlarmClock, Search } from 'lucide-svelte';
 </script>
 
 <!-- 
@@ -14,10 +14,21 @@ one way to do it
 -->
 
 <Button>
-	{#snippet left()}
-		<Search />
+	{#snippet left(isHover: boolean)}
+		{#if isHover}
+			<Search />
+		{:else}
+			<AlarmCheck />
+		{/if}
 	{/snippet}
-	Text
+
+	{#snippet children(isHover)}
+		{#if isHover}
+			Bitch i'm hovering
+		{:else}
+			Fuck you, I'll pop your head off
+		{/if}
+	{/snippet}
 
 	{#snippet right()}
 		<AlarmClock />
